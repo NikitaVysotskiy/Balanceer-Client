@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Sidebar, Segment, Menu, Icon } from 'semantic-ui-react'
+import { Sidebar, Segment, Menu } from 'semantic-ui-react'
 
-import Content from './Content'
+import Content from '../Content'
+import SidebarMenu from './SidebarMenu'
 
 class SidebarWrap extends Component {
 
@@ -18,10 +19,7 @@ class SidebarWrap extends Component {
                         vertical
                         inverted
                     >
-                        <Menu.Item name='home'>
-                            <Icon name='home' />
-                            Home
-                        </Menu.Item>
+                        <SidebarMenu />
                     </Sidebar>
                     <Sidebar.Pusher>
                         <Segment basic>

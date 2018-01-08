@@ -9,7 +9,10 @@ class Content extends Component {
     render() {
         return (
             <div id='content'>
-                <Header as='h3'>Application Content</Header>
+                <Header as='h2'>Balance</Header>
+                <Header as='h3'>USD</Header>
+                <Header as='h3'>UAH</Header>
+
             </div>
         )
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import SidebarWrap from './SidebarWrap'
+import SidebarWrap from './Sidebar/SidebarWrap'
 import HeaderMenu from './HeaderMenu'
 
 class App extends Component {
