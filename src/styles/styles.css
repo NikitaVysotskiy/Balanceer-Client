@@ -1,3 +1,24 @@
 #content {
     height: 500px;
 }
+
+#toggleButtonWrap {
+    margin: 0;
+    padding: 0;
+}
+
+#toggleButtonWrap .ui.button{
+    border-radius: 0;
+    background: #1b1c1d;
+    width: 150px;
+    height: 50px;
+    margin-left: 6px;
+}
+
+#toggleButtonWrap .ui.button .sidebar.icon {
+    color: white;
+}
+
+.ui.secondary.menu {
+    margin-bottom: 0;
+}

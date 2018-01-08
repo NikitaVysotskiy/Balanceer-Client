@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Menu, Button, Icon } from 'semantic-ui-react';
 
+import '../styles/styles.css'
+
 import Avatar from './Avatar';
+
 
 class HeaderMenu extends Component {
     render() {
         return (
             <Menu secondary>
                 <Menu.Menu>
-                    <Menu.Item>
+                    <Menu.Item id='toggleButtonWrap'>
                         <Button onClick={this.props.toggleSidebarVisibility}>
                             <Icon name='sidebar' />
                         </Button>

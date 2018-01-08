@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import '../styles/styles.css'
 import {Header} from "semantic-ui-react";
+
+import '../styles/styles.css'
+
 
 class Content extends Component {
 
