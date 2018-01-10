@@ -16,9 +16,9 @@ class SidebarMenu extends Component {
                     <Icon name='line chart' />
                     Income
                 </Menu.Item>
-                <Menu.Item name='outcome'>
+                <Menu.Item name='expense'>
                     <Icon name='credit card alternative' />
-                    Outcome
+                    Expense
                 </Menu.Item>
                 <Menu.Item name='profile'>
                     <Icon name='user circle' />

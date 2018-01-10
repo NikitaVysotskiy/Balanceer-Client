@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {Header} from "semantic-ui-react";
 
 import '../styles/styles.css'
+
+import Balance from './Balance';
 
 
 class Content extends Component {
@@ -9,10 +10,7 @@ class Content extends Component {
     render() {
         return (
             <div id='content'>
-                <Header as='h2'>Balance</Header>
-                <Header as='h3'>USD</Header>
-                <Header as='h3'>UAH</Header>
-
+                <Balance />
             </div>
         )
     }

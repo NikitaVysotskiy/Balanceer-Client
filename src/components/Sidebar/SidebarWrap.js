@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Sidebar, Segment, Menu } from 'semantic-ui-react'
 
-import Content from '../Content'
+import Content from '../../Content/Content'
 import SidebarMenu from './SidebarMenu'
 
 class SidebarWrap extends Component {

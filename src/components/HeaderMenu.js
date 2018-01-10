@@ -13,7 +13,9 @@ class HeaderMenu extends Component {
                 <Menu.Menu>
                     <Menu.Item id='toggleButtonWrap'>
                         <Button onClick={this.props.toggleSidebarVisibility}>
-                            <Icon name='sidebar' />
+                            <Button.Content hidden>
+                                <Icon name='sidebar' />
+                            </Button.Content>
                         </Button>
                     </Menu.Item>
                     <Menu.Item>
