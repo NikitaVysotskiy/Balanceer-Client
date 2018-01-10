@@ -14,7 +14,7 @@ const BallanceButtons = () => (
             <Button animated='vertical' negative>
                 <Button.Content hidden>Expense</Button.Content>
                 <Button.Content visible>
-                    <Icon name='minus squared' />
+                    <Icon name='minus square' />
                 </Button.Content>
             </Button>
         </Button.Group>
