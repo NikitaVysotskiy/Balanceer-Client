@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
-import SidebarWrap from './Sidebar/SidebarWrap'
+// import SidebarWrap from './Sidebar/SidebarWrap'
 import HeaderMenu from './HeaderMenu'
+import Content from "./Content/Content";
+
+
 
 class App extends Component {
 
@@ -16,11 +19,12 @@ class App extends Component {
     };
 
     render() {
-        const visible = this.state.visible;
+        // const visible = this.state.visible;
         return (
             <div>
                 <HeaderMenu toggleSidebarVisibility={this.toggleSidebarVisibility} />
-                <SidebarWrap visible={visible} />
+                {/*<SidebarWrap visible={visible} />*/}
+                <Content />
             </div>
         )
     }

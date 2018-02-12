@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Menu, Button, Icon } from 'semantic-ui-react';
+import { Menu, Icon } from 'semantic-ui-react';
 
-import '../../styles/styles.css'
+import '../styles/styles.css'
 
 import Avatar from './Avatar';
 
@@ -11,13 +11,13 @@ class HeaderMenu extends Component {
         return (
             <Menu secondary>
                 <Menu.Menu>
-                    <Menu.Item id='toggleButtonWrap'>
-                        <Button onClick={this.props.toggleSidebarVisibility}>
-                            <Button.Content hidden>
-                                <Icon name='sidebar' />
-                            </Button.Content>
-                        </Button>
-                    </Menu.Item>
+                    {/*<Menu.Item id='toggleButtonWrap'>*/}
+                        {/*<Button onClick={this.props.toggleSidebarVisibility}>*/}
+                            {/*<Button.Content hidden>*/}
+                                {/*<Icon name='sidebar' />*/}
+                            {/*</Button.Content>*/}
+                        {/*</Button>*/}
+                    {/*</Menu.Item>*/}
                     <Menu.Item>
                         <Avatar />
                     </Menu.Item>
