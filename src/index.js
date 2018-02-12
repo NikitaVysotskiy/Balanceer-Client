@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './components/App';
-import { balance, balanceItems } from "./reducers";
+import { balance, balanceItems, total } from "./reducers";
 
 import './styles/index.css';
 
@@ -12,22 +12,22 @@ const initialState = {
     balanceItems: [
         {
             balanceType: "INCOME",
-            currency: "uah",
-            amount: "1500",
+            currency: "UAH",
+            amount: 1500,
             source: "University grant",
             date: "2018-01-20"
         },
         {
             balanceType: "INCOME",
-            currency: "uah",
-            amount: "10000",
+            currency: "USD",
+            amount: 700,
             source: "Salary",
             date: "2018-01-05"
         },
         {
            balanceType: "EXPENSE",
-           currency: "uah",
-           amount: "170",
+           currency: "UAH",
+           amount: 170,
            source: "Travel card",
            date: "2018-01-20"
         },
@@ -37,7 +37,8 @@ const initialState = {
 const store = createStore(
     combineReducers({
         balance,
-        balanceItems
+        balanceItems,
+        total
     }),
     initialState
 );

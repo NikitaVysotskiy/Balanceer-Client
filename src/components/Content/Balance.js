@@ -10,9 +10,14 @@ import '../../styles/styles.css';
 
 const mapStateToProps =  state => {
     return {
-        balanceItems: state.balanceItems
+        balanceItems: state.balanceItems,
+        total: state.total
     }
 };
+
+// const matchDispatchToProps = function(dispatch) {
+//     return bindActionCreators({selectUser: selectUser}, dispatch);
+// };
 
 
 class Balance extends Component {
