@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import '../../styles/styles.css'
+import '../../../styles/styles.css'
 
 import Balance from './Balance';
 

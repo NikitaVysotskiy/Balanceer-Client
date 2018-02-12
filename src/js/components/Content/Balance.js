@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Statistic, Segment } from 'semantic-ui-react';
 
-import '../../styles/styles.css';
+import '../../../styles/styles.css';
 
 import BalanceButtons from './BalanceButtons';
 
