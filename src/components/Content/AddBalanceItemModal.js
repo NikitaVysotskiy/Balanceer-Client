@@ -1,11 +1,35 @@
 import React from 'react'
-import { Button, Icon, Header, Modal } from 'semantic-ui-react'
+import { Button, Form, Icon, Header, Modal, Segment } from 'semantic-ui-react'
 
-const AddBalanceItemModal = (props) => (
+
+
+const BalanceItemForm = props => (
+    <Segment inverted>
+        <Form inverted>
+            <Form.Group widths='equal'>
+                <Form.Input
+                    fluid
+                    icon='eur'
+                    iconPosition='left'
+                    placeholder='Amount'
+                />
+                <Form.Input
+                    fluid
+                    placeholder='Source'
+                    icon='credit card alternative'
+                />
+                <Form.Input fluid placeholder='Date' />
+            </Form.Group>
+        </Form>
+    </Segment>
+);
+
+
+const AddBalanceItemModal = props => (
     <Modal open={props.open} onClose={props.onClose} basic size='small'>
-        <Header icon='archive' content={`Add ${props.type}`} />
+        <Header icon='write' content={`Add ${props.type}`} />
         <Modal.Content>
-            <p>Fill form below</p>
+            <BalanceItemForm />
         </Modal.Content>
         <Modal.Actions>
             <Button basic color='red' inverted>

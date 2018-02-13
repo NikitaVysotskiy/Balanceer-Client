@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 
-const BallanceButtons = (props) => (
+const BallanceButtons = props => (
     <div>
         <Button.Group>
             <Button animated='vertical' positive onClick={props.onClick('income')}>
