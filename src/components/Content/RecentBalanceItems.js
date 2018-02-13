@@ -11,8 +11,8 @@ class RecentBalanceItems extends Component {
         const balanceItems = this.props.balanceItems;
         return (
             <List>
-                {balanceItems.map(item => (
-                    <List.Item>
+                {balanceItems.map((item, i) => (
+                    <List.Item key={i}>
                         {item.balanceType === INCOME ?
                             <Icon size="big" color="green" name="plus"/> :
                             <Icon size="big" color="red" name="minus"/>

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { Grid, Header, Statistic, Segment } from 'semantic-ui-react';
 import React, { Component } from 'react';
 
+import AddBalanceItemModal from "./AddBalanceItemModal";
 import BalanceButtons from './BalanceButtons';
 import { INCOME } from "../../constants/constants";
 import RecentBalanceItems from "./RecentBalanceItems";
@@ -34,18 +35,30 @@ const getTotalForCurrency = (items) => {
 
 class Balance extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = { modalOpen: false };
+        this.showModal.bind(this);
+        this.closeModal.bind(this);
+    }
+
+    showModal = type => () => this.setState({ type, modalOpen: true });
+    closeModal = () => this.setState({ modalOpen: false });
+
     renderBalanceItem(currencies){
         return (currencies.map((currency, i) => {
             const filteredBalanceItems = filterBalanceItemsForCurrency(this.props.balanceItems, currency);
             const total = getTotalForCurrency(filteredBalanceItems, currency);
+            const { modalOpen, type } = this.state;
             return (
-                <Grid.Column width={8}>
+                <Grid.Column width={8} key={i}>
                     <Grid>
                         <Grid.Row>
                             <Grid.Column width={8}>
-                                <Segment inverted key={i}>
+                                <Segment inverted textAlign='center'>
                                     <Statistic inverted label={currency} value={total} />
-                                    <BalanceButtons />
+                                    <BalanceButtons onClick={this.showModal} />
+                                    <AddBalanceItemModal open={modalOpen} type={type} onClose={this.closeModal} />
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={8}>
