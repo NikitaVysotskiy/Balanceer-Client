@@ -1,41 +1,50 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Header, Statistic, Segment } from 'semantic-ui-react';
 import React, { Component } from 'react';
 
-// import BalanceButtons from './BalanceButtons';
+import BalanceButtons from './BalanceButtons';
+import { INCOME } from "../../constants/constants";
 
 import '../../styles/styles.css';
-
 
 
 const mapStateToProps =  state => {
     return {
         balanceItems: state.balanceItems,
+        currencies: state.currencies,
         total: state.total
     }
 };
 
-// const matchDispatchToProps = function(dispatch) {
-//     return bindActionCreators({selectUser: selectUser}, dispatch);
-// };
+
+const getTotalForCurrency = (items, currency) => {
+    return items.filter(item => item.currency === currency).reduce(
+        (prev, curr) => {
+            return prev + (curr.balanceType === INCOME ? curr.amount : - curr.amount)
+        }, 0
+    )
+};
 
 
 class Balance extends Component {
 
-    renderBalanceItems(){
-        return this.props.balanceItems.map((item, i) => (
-            <Segment inverted key={i}>
-                <Statistic inverted label={item.currency} value={item.amount} />
-                {/*<BalanceButtons />*/}
-            </Segment>
-        ))
+    renderBalanceItem(currencies){
+        return (currencies.map((currency, i) => {
+            const total = getTotalForCurrency(this.props.balanceItems, currency);
+            return (
+                <Segment inverted key={i}>
+                    <Statistic inverted label={currency} value={total} />
+                    <BalanceButtons />
+                </Segment>
+            )
+        }));
     }
 
     render() {
         return (
             <Segment>
                 <Header size='huge'>Current Balance</Header>
-                {this.renderBalanceItems()}
+                {this.renderBalanceItem(this.props.currencies)}
             </Segment>
         )
     }
