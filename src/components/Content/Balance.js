@@ -57,7 +57,7 @@ class Balance extends Component {
             const balanceItem = {
                 balanceType: this.state.type,
                 currency: this.state.currency,
-                amount: this.props.balance.amount,
+                amount: parseFloat(this.props.balance.amount),
                 source: this.props.balance.source,
                 // TODO: correct format
                 date: new Date().toLocaleDateString().split('/').join('-')
