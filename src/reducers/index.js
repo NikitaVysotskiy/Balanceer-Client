@@ -1,4 +1,4 @@
-import { ADD_BALANCE } from "../constants/action-types";
+import { ADD_BALANCE, UPDATE_BALANCE_FIELD } from "../constants/action-types";
 
 
 export const balance = (state={}, action) => {
@@ -11,6 +11,8 @@ export const balance = (state={}, action) => {
                 source: action.source,
                 date: action.date
             };
+        case UPDATE_BALANCE_FIELD:
+            return { ...state, [action.key]: action.value };
         default:
             return state
     }

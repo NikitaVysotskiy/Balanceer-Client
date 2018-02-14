@@ -1,1 +1,2 @@
 export const ADD_BALANCE = 'ADD_BALANCE';
+export const UPDATE_BALANCE_FIELD = 'UPDATE_BALANCE_FIELD';

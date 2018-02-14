@@ -5,7 +5,6 @@ import HeaderMenu from './HeaderMenu'
 import Content from "./Content/Content";
 
 
-
 class App extends Component {
 
     constructor (props) {

@@ -4,19 +4,27 @@ import React, { Component } from 'react';
 
 import AddBalanceItemModal from "./AddBalanceItemModal";
 import BalanceButtons from './BalanceButtons';
-import { INCOME } from "../../constants/constants";
+import {INCOME} from "../../constants/constants";
 import RecentBalanceItems from "./RecentBalanceItems";
+import {ADD_BALANCE, UPDATE_BALANCE_FIELD} from "../../constants/action-types";
 
 import '../../styles/styles.css';
 
 
 const mapStateToProps =  state => {
     return {
+        balance: state.balance,
         balanceItems: state.balanceItems,
         currencies: state.currencies,
         total: state.total
     }
 };
+
+
+const mapDispatchToProps = dispatch => ({
+    onSubmit: payload => dispatch({type: ADD_BALANCE, ...payload}),
+    onUpdateField: (key, value) => dispatch({type: UPDATE_BALANCE_FIELD, key, value})
+});
 
 
 const filterBalanceItemsForCurrency = (items, currency)  => {
@@ -37,19 +45,43 @@ class Balance extends Component {
 
     constructor(props) {
         super(props);
+
+        const updateFieldEvent = key => ev => {
+            this.props.onUpdateField(key, ev.target.value)
+        };
+        this.changeAmount = updateFieldEvent('amount');
+        this.changeSource = updateFieldEvent('source');
+
+        this.submitForm = ev => {
+            ev.preventDefault();
+            const balanceItem = {
+                balanceType: this.state.type,
+                currency: this.state.currency,
+                amount: this.props.balance.amount,
+                source: this.props.balance.source,
+                // TODO: correct format
+                date: new Date().toLocaleDateString().split('/').join('-')
+            };
+
+            this.props.onSubmit(balanceItem);
+            this.closeModal();
+
+        };
+
+
         this.state = { modalOpen: false };
         this.showModal.bind(this);
         this.closeModal.bind(this);
     }
 
-    showModal = type => () => this.setState({ type, modalOpen: true });
+    showModal = (type, currency) => () => this.setState({ type, currency, modalOpen: true });
     closeModal = () => this.setState({ modalOpen: false });
 
     renderBalanceItem(currencies){
         return (currencies.map((currency, i) => {
             const filteredBalanceItems = filterBalanceItemsForCurrency(this.props.balanceItems, currency);
             const total = getTotalForCurrency(filteredBalanceItems, currency);
-            const { modalOpen, type } = this.state;
+            const { modalOpen } = this.state;
             return (
                 <Grid.Column width={8} key={i}>
                     <Grid>
@@ -57,8 +89,16 @@ class Balance extends Component {
                             <Grid.Column width={8}>
                                 <Segment inverted textAlign='center'>
                                     <Statistic inverted label={currency} value={total} />
-                                    <BalanceButtons onClick={this.showModal} />
-                                    <AddBalanceItemModal open={modalOpen} type={type} onClose={this.closeModal} />
+                                    <BalanceButtons onClick={this.showModal} currency={currency}/>
+                                    <AddBalanceItemModal
+                                        open={modalOpen}
+                                        onClose={this.closeModal}
+                                        amount={this.props.amount}
+                                        source={this.props.source}
+                                        changeAmount={this.changeAmount}
+                                        changeSource={this.changeSource}
+                                        submitForm={this.submitForm}
+                                    />
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column width={8}>
@@ -85,4 +125,4 @@ class Balance extends Component {
     }
 }
 
-export default connect(mapStateToProps)(Balance);
+export default connect(mapStateToProps, mapDispatchToProps)(Balance);
